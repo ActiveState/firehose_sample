@@ -2,6 +2,7 @@ package main
 
 import (
 	"crypto/tls"
+	"flag"
 	"fmt"
 	"os"
 
@@ -9,13 +10,17 @@ import (
 	"github.com/cloudfoundry/noaa/events"
 )
 
+var (
+	dopplerAddress = flag.String("dopplerAddress", "ws://192.168.6.19.xip.io:51200", "doppler agent address")
+)
+
 var authToken = os.Getenv("CF_ACCESS_TOKEN")
 
-const DopplerAddress = "ws://192.168.6.19.xip.io:51200"
 const firehoseSubscriptionId = "firehose-a"
 
 func main() {
-	connection := noaa.NewConsumer(DopplerAddress, &tls.Config{InsecureSkipVerify: true}, nil)
+	flag.Parse()
+	connection := noaa.NewConsumer(*dopplerAddress, &tls.Config{InsecureSkipVerify: true}, nil)
 	connection.SetDebugPrinter(ConsoleDebugPrinter{})
 
 	fmt.Println("===== Streaming Firehose (will only succeed if you have admin credentials)")

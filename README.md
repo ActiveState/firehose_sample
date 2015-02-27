@@ -24,3 +24,15 @@ $ cd $GOPATH/src/github.com/ActiveState/firehose_sample
 $ go build -o bin/firehose_sample firehose_sample/main.go
 $ $GOPATH/src/github.com/firehose_sample/bin/firehose_sample
 ```
+The default doppler address is "ws://192.168.6.19.xip.io:51200" to update this you'll need to find out what is a correct port address by running
+```
+> kato config get doppler
+
+outgoing_port: 51200
+```
+and then 
+
+```
+$ $GOPATH/src/github.com/firehose_sample/bin/firehose_sample -dopplerAddress="ws://192.168.6.19.xip.io:51200"
+
+```
