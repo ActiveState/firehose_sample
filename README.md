@@ -9,7 +9,7 @@ and then look into ```$ /.cf/config.json ```
 "AccessToken": "bearer longtoken123..."
 ```
 
-Note: In order to access the full firehose stream you'll need to use an admin user during cf log to generate admin access token
+Note: In order to access the full firehose stream you'll need to use an admin user during cf login to generate admin access token
 
 Once toke generated:
 
@@ -21,6 +21,7 @@ And then
 
 ```
 $ cd $GOPATH/src/github.com/ActiveState/firehose_sample
+$ go get
 $ go build -o bin/firehose_sample firehose_sample/main.go
 $ $GOPATH/src/github.com/firehose_sample/bin/firehose_sample
 ```
