@@ -4,7 +4,7 @@
 $ cf api https://api.10.244.0.34.xip.io --skip-ssl-validation
 $ cf login
 ```
-and then look into ```$ /.cf/config.json ```
+and then look into ```$ ~/.cf/config.json ```
 ```
 "AccessToken": "bearer longtoken123..."
 ```
@@ -27,7 +27,7 @@ $ $GOPATH/src/github.com/firehose_sample/bin/firehose_sample
 ```
 The default doppler address is "ws://192.168.6.19.xip.io:51200" to update this you'll need to find out what is a correct port address by running
 ```
-> kato config get doppler
+> kato config get doppler | grep outgoing_port
 
 outgoing_port: 51200
 ```
